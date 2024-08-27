@@ -48,6 +48,7 @@ def show_tiles(tiles):
         print()
     print()
 
+
 def process_beam(beam, tiles):
     if beam.x < 0 or beam.y < 0:
         return None
@@ -100,6 +101,7 @@ def process_beam(beam, tiles):
 
     return None
 
+
 def start_cycle(first_beam, tiles):
     beams = [first_beam]
     while len(beams) > 0:
@@ -114,6 +116,7 @@ def start_cycle(first_beam, tiles):
         beams = new_beams
     return tiles
 
+
 def main():
     input_list = read_input("day16.txt")
     init_tiles = prepare_input(input_list)
@@ -123,7 +126,8 @@ def main():
         tiles = prepare_input(input_list)
         first_beam = Beam(tile.x, tile.y, "down")
         tiles = start_cycle(first_beam, tiles)
-        upper_number.append(sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
+        upper_number.append(
+            sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
 
     print(max(upper_number))
     # Left
@@ -132,7 +136,8 @@ def main():
         tiles = prepare_input(input_list)
         first_beam = Beam(tile[0].x, tile[0].y, "right")
         tiles = start_cycle(first_beam, tiles)
-        left_number.append(sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
+        left_number.append(
+            sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
     print(max(left_number))
     # Right
     right_number = []
@@ -140,7 +145,8 @@ def main():
         tiles = prepare_input(input_list)
         first_beam = Beam(tile[-1].x, tile[-1].y, "left")
         tiles = start_cycle(first_beam, tiles)
-        right_number.append(sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
+        right_number.append(
+            sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
     print(max(right_number))
     # Down
     down_number = []
@@ -148,7 +154,10 @@ def main():
         tiles = prepare_input(input_list)
         first_beam = Beam(tile.x, tile.y, "up")
         tiles = start_cycle(first_beam, tiles)
-        down_number.append(sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
+        down_number.append(
+            sum(map(lambda y: 1, filter(lambda x: len(x.directions) > 0, [tile for line in tiles for tile in line]))))
     print(max(down_number))
+
+
 if __name__ == "__main__":
     main()
